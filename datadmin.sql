@@ -1,34 +1,27 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Waktu pembuatan: 17 Des 2022 pada 18.12
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.12
+/*
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 8.0.20-11 : Database - datadmin
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`datadmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
---
--- Database: `datadmin`
---
+USE `datadmin`;
 
--- --------------------------------------------------------
+/*Table structure for table `admin` */
 
---
--- Struktur dari tabel `admin`
---
+DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
+  `id_admin` int NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) NOT NULL,
   `tgl_lahir` text NOT NULL,
   `alamat` text NOT NULL,
@@ -36,37 +29,45 @@ CREATE TABLE `admin` (
   `no_hp` text NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `admin`
---
+/*Data for the table `admin` */
 
-INSERT INTO `admin` (`id_admin`, `nama`, `tgl_lahir`, `alamat`, `no_identitas`, `no_hp`, `email`, `username`, `password`) VALUES
-(2, 'DilanEa', '28 Desember 1999', 'Jl.Jalan Taman Cibeunying, No. 8 Bandung', '250155011043', '', 'dilandabencana@gmail.com', 'dilananya', 'dilan');
+insert  into `admin`(`id_admin`,`nama`,`tgl_lahir`,`alamat`,`no_identitas`,`no_hp`,`email`,`username`,`password`) values 
+(2,'DilanEa','28 Desember 1999','Jl.Jalan Taman Cibeunying, No. 8 Bandung','250155011043','','dilandabencana@gmail.com','dilananya','dilan');
 
---
--- Indexes for dumped tables
---
+/*Table structure for table `tb_buku` */
 
---
--- Indeks untuk tabel `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
+DROP TABLE IF EXISTS `tb_buku`;
 
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
+CREATE TABLE `tb_buku` (
+  `id_buku` int NOT NULL AUTO_INCREMENT,
+  `judul_buku` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `penulis_buku` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prodi_buku` int DEFAULT NULL,
+  `abstrak_buku` text COLLATE utf8mb4_general_ci,
+  `file_buku` text COLLATE utf8mb4_general_ci,
+  `type_buku` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_buku`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- AUTO_INCREMENT untuk tabel `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+/*Data for the table `tb_buku` */
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*Table structure for table `tb_prodi` */
+
+DROP TABLE IF EXISTS `tb_prodi`;
+
+CREATE TABLE `tb_prodi` (
+  `id_prodi` int NOT NULL AUTO_INCREMENT,
+  `nama_prodi` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_prodi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tb_prodi` */
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
